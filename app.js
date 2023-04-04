@@ -1,0 +1,1 @@
+console.log("Hảo Thanh Long ruột đỏ")
