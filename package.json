@@ -1,0 +1,19 @@
+{
+  "name": "fullstack_backend_0",
+  "version": "1.0.0",
+  "description": "Nguyen Thanh Hao Long fullstack coder",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "nodejs",
+    "react"
+  ],
+  "author": "Nguyen Thanh Hao Long",
+  "license": "ISC",
+  "dependencies": {
+    "express": "4.18.2"
+  }
+}
