@@ -1,2 +1,2 @@
 node_modules
-# Git ignore là bơ đi cái tệp node_modules , vì push code lên git mà kèm theo thằng ni thì không cần thiết
+.env 

@@ -1,19 +1,32 @@
 {
-  "name": "fullstack_backend_0",
+  "name": "full-back-end",
   "version": "1.0.0",
-  "description": "Nguyen Thanh Hao Long fullstack coder",
+  "description": "Khoa hoc code fullstacj restfull api",
   "main": "server.js",
+  "dependencies": {
+    "dotenv": "16.0.3",
+    "ejs": "3.1.8",
+    "express": "4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "2.0.20"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon ./src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HaoLong4935/nodejs-backend-resful.git"
   },
   "keywords": [
-    "nodejs",
+    "node_js",
     "react"
   ],
-  "author": "Nguyen Thanh Hao Long",
+  "author": "Hao Long",
   "license": "ISC",
-  "dependencies": {
-    "express": "4.18.2"
-  }
+  "bugs": {
+    "url": "https://github.com/HaoLong4935/nodejs-backend-resful/issues"
+  },
+  "homepage": "https://github.com/HaoLong4935/nodejs-backend-resful#readme"
 }
