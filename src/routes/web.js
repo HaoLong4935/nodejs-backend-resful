@@ -2,19 +2,14 @@
 const express = require('express');
 //Khai báo express router
 const router = express.Router();
+const { gethomepage, checkAB, gethoiLong, postCreateUser } = require('../controllers/homeController')
 
 //Khai bao route
-router.get('/haolong', (req, res) => {
-    res.render('sample.ejs')
-})
+router.get('/home', gethomepage);
+router.get('/abc', checkAB);
+router.get('/haolong', gethoiLong);
 
-router.get('/abc', (req, res) => {
-    res.send('Hello, tui là Leng')
-})
-
-router.get('/', (req, res) => {
-    res.send('Hello World ! ')
-})
+router.post('/CREATE_USER', postCreateUser);
 
 //Xuất hàm ni ra cục bộ 
 module.exports = router;
