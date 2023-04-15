@@ -10,37 +10,65 @@
 
 <body>
     <div class="topnav">
-        <a class="active" href="#home">Home</a>
-        <a href="#news">News</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
+        <a class="active" href="/">Home</a>
+        <a href="/CREATE">Create user</a>
     </div>
 
-    <div class="form-add-new">
-        <form action="/CREATE_USER" method="POST">
-            <fieldset>
-                <legend>Add new user</legend>
-                <div class="input-group">
-                    <label>Email:</label>
-                    <!-- Để lấy được giá trị của trường là gì thì cần dấu hiệu nhận biết là name="" để req.body có thể nhận được -->
-                    <input type="text" id="emailId" name="emailID">
-                </div>
+    <div class="table-container">
+        <div class="title">List User</div>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>EMAIL</th>
+                <th>NAME</th>
+                <th>CITY</th>
+                <th>ACTIONS</th>
+            </tr>
 
-                <div class="input-group">
-                    <label>Name:</label>
-                    <input type="text" name="nameInput">
-                </div>
+            <!-- <% for (let i=0 ; i < listUsers.length ; i++) { %>
+                <tr>
+                    <td>
+                        <%= listUsers[i].id %>
+                    </td>
+                    <td>
+                        <%= listUsers[i].email %>
+                    </td>
+                    <td>
+                        <%= listUsers[i].name %>
+                    </td>
+                    <td>
+                        <%= listUsers[i].city %>
+                    </td>
+                    <td>
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </td>
+                </tr>
+                <% } %> -->
 
-                <div class="input-group">
-                    <label>City:</label>
-                    <input type="text" name="cityInput">
-                </div>
-                <div>
-                    <button>Save</button>
-                </div>
-            </fieldset>
-        </form>
+            <% listUsers.forEach(function(user, index) { %>
+                <tr>
+                    <td>
+                        <%= user.id %> - <%= index %>
+                    </td>
+                    <td>
+                        <%= user.email %>
+                    </td>
+                    <td>
+                        <%= user.name %>
+                    </td>
+                    <td>
+                        <%= user.city %>
+                    </td>
+                    <td>
+                        <a href="/UPDATE/<%= user.id %>">Edit</a>
+                        <button>Delete</button>
+                    </td>
+                </tr>
+                <% });%>
+        </table>
     </div>
+
 </body>
 
 </html>

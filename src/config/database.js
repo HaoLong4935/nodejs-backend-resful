@@ -1,6 +1,6 @@
 //Cần phải khai báo thư viện mới dùng được biến bên env
 require('dotenv').config();
-const mysql = require('mysql2');
+const mysql = require('mysql2/promise');
 
 //test connection
 // const connection = mysql.createConnection({
