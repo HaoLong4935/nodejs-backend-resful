@@ -1,7 +1,7 @@
 //Lấy file connection 
 const { render } = require('ejs')
 const connection = require('../config/database')
-const { getAllUsers, getUserById, updateUserById } = require('../serviecs/CRUDService')
+const { getAllUsers, getUserById, updateUserById, deleteUserById } = require('../serviecs/CRUDService')
 
 const gethomepage = async (req, res) => {
     let results = await getAllUsers();
@@ -42,7 +42,6 @@ const getCreatePage = (req, res) => {
 
 const getUpdatePage = async (req, res) => {
     const userId = req.params.id;
-
     let user = await getUserById(userId);
     //console.log("Check id: ", results);
 
@@ -76,6 +75,21 @@ const postUpdateUser = async (req, res) => {
     //const [results, fields] = await connection.query('SELECT * FROM Users u');
 }
 
+const postDeleteUser = async (req, res) => {
+    const userId = req.params.id;
+    let user = await getUserById(userId);
+
+    res.render('delete.ejs', { user: user });
+}
+
+const postHandleRemoveUser = async (req, res) => {
+    const id = req.body.userId;
+
+    await deleteUserById(id);
+
+    res.redirect('/');
+}
+
 module.exports = {
     gethomepage,
     checkAB,
@@ -83,5 +97,7 @@ module.exports = {
     postCreateUser,
     getCreatePage,
     getUpdatePage,
-    postUpdateUser
+    postUpdateUser,
+    postDeleteUser,
+    postHandleRemoveUser
 }
