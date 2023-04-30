@@ -49,9 +49,9 @@ const getCreatePage = (req, res) => {
 
 const getUpdatePage = async (req, res) => {
     const userId = req.params.id;
-    let user = await getUserById(userId);
+    //let user = await getUserById(userId);
     //console.log("Check id: ", results);
-
+    let user = await User.findById(userId).exec();
 
     res.render('edit.ejs', { user: user })
 }
@@ -66,7 +66,8 @@ const postUpdateUser = async (req, res) => {
     //Với update chúng ta cần thêm một tham số nữa là Id
     let userId = req.body.userId;
 
-    await updateUserById(email, city, name, userId);
+    // await User.updateOne({ điều kiện để filter(lọc) }, { các giá trị muốn cập nhật }) => Trả về một {};
+    await User.updateOne({ _id: userId }, { email: email, name: name, city: city });
 
     console.log(">> emial=", email, " name=", name, " city=", city, " userId=", userId)
     // let [results, fields] = await connection.query(
