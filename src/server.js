@@ -5,7 +5,6 @@ const { gethomepage, checkAB, gethoiLong } = require('../src/controllers/homeCon
 const webRoutes = require('./routes/web');
 const router = require('./routes/web');
 const connection = require('./config/database');
-const Kitten = require('./models/Kitten');
 
 
 const app = express();
@@ -26,8 +25,7 @@ configureViewEngine(app);
 //khai bao route
 app.use('/', webRoutes);
 
-const silence = new Kitten({ name: 'Hoi Dan IT cat' });
-silence.save();
+
 
 //Test connection 
 (async () => {

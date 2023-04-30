@@ -3,8 +3,10 @@ const { render } = require('ejs')
 const connection = require('../config/database')
 const { getAllUsers, getUserById, updateUserById, deleteUserById } = require('../serviecs/CRUDService')
 
+const User = require("../models/User");
+
 const gethomepage = async (req, res) => {
-    let results = await getAllUsers();
+    let results = await User.find({});
     return res.render('home.ejs', { listUsers: results });
 }
 
@@ -18,18 +20,23 @@ const gethoiLong = (req, res) => {
 
 //Tạo hàm create user
 const postCreateUser = async (req, res) => {
-    console.log("Request body:", req.body);
+    // console.log("Request body:", req.body);
 
     //Lấy các giá trị người dùng nhập trong req.body
     let email = req.body.emailID;
     let name = req.body.nameInput;
     let city = req.body.cityInput;
 
-    let [results, fields] = await connection.query(
-        `INSERT INTO Users(email,name,city)VALUES(?,?,?) `, [email, name, city],
-    );
+    // let [results, fields] = await connection.query(
+    //     `INSERT INTO Users(email,name,city)VALUES(?,?,?) `, [email, name, city],
+    // );
 
-    console.log("Check results: ", results);
+    await User.create({
+        email: email,
+        name: name,
+        city: city
+    })
+
     res.send("Create Success")
 
 
