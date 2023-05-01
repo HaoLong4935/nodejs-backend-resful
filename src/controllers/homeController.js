@@ -20,16 +20,10 @@ const gethoiLong = (req, res) => {
 
 //Tạo hàm create user
 const postCreateUser = async (req, res) => {
-    // console.log("Request body:", req.body);
-
     //Lấy các giá trị người dùng nhập trong req.body
     let email = req.body.emailID;
     let name = req.body.nameInput;
     let city = req.body.cityInput;
-
-    // let [results, fields] = await connection.query(
-    //     `INSERT INTO Users(email,name,city)VALUES(?,?,?) `, [email, name, city],
-    // );
 
     await User.create({
         email: email,
@@ -38,9 +32,6 @@ const postCreateUser = async (req, res) => {
     })
 
     res.send("Create Success")
-
-
-    //const [results, fields] = await connection.query('SELECT * FROM Users u');
 }
 
 const getCreatePage = (req, res) => {
@@ -85,15 +76,19 @@ const postUpdateUser = async (req, res) => {
 
 const postDeleteUser = async (req, res) => {
     const userId = req.params.id;
-    let user = await getUserById(userId);
-
+    let user = await User.findById(userId).exec();
     res.render('delete.ejs', { user: user });
 }
 
 const postHandleRemoveUser = async (req, res) => {
     const id = req.body.userId;
 
-    await deleteUserById(id);
+    //await deleteUserById(id);
+    let result = await User.deleteOne({
+        _id: id
+    });
+
+    console.log(result);
 
     res.redirect('/');
 }

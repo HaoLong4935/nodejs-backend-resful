@@ -3,7 +3,7 @@ const express = require('express')
 const configureViewEngine = require('./config/viewEngine');
 const { gethomepage, checkAB, gethoiLong } = require('../src/controllers/homeController')
 const webRoutes = require('./routes/web');
-const router = require('./routes/web');
+const apiRouter = require('./routes/api');
 const connection = require('./config/database');
 
 
@@ -15,16 +15,16 @@ const hostname = process.env.HOST_NAME;
 app.use(express.json()); //for json
 app.use(express.urlencoded({ extended: true })) //for data
 
-router.get('/testController', gethomepage)
-router.get('/AB', checkAB)
-router.get('/hoiLong', gethoiLong)
+// router.get('/testController', gethomepage)
+// router.get('/AB', checkAB)
+// router.get('/hoiLong', gethoiLong)
 
 //config template engine
 configureViewEngine(app);
 
 //khai bao route
 app.use('/', webRoutes);
-
+app.use('/v1/api', apiRouter);
 
 
 //Test connection 
