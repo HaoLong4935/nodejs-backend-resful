@@ -53,4 +53,21 @@ const puttUpdateUserAPI = async (req, res) => {
 }
 
 
-module.exports = { getUsersAPI, postCreateUserAPI, puttUpdateUserAPI }
+const deleteUserAPI = async (req, res) => {
+    const id = req.body.userId;
+
+    //await deleteUserById(id);
+    let result = await User.deleteOne({
+        _id: id
+    });
+
+    console.log(result);
+
+    return res.status(200).json({
+        errorCode: 0,
+        data: result
+    });
+}
+
+
+module.exports = { getUsersAPI, postCreateUserAPI, puttUpdateUserAPI, deleteUserAPI }

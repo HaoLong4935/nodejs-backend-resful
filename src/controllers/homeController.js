@@ -64,13 +64,8 @@ const postUpdateUser = async (req, res) => {
     // let [results, fields] = await connection.query(
     //     `INSERT INTO Users(email,name,city)VALUES(?,?,?) `, [email, name, city],
     // );
-
-
-
     //res.send("Update Success")
     res.redirect('/');
-
-
     //const [results, fields] = await connection.query('SELECT * FROM Users u');
 }
 
