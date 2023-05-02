@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const configureViewEngine = require('./config/viewEngine');
 const { gethomepage, checkAB, gethoiLong } = require('../src/controllers/homeController')
+const fileupload = require('express-fileupload');
 const webRoutes = require('./routes/web');
 const apiRouter = require('./routes/api');
 const connection = require('./config/database');
@@ -10,6 +11,9 @@ const connection = require('./config/database');
 const app = express();
 const port = process.env.PORT || 3000;
 const hostname = process.env.HOST_NAME;
+
+//Config fileupload 
+app.use(fileupload());
 
 //Config req.body
 app.use(express.json()); //for json
